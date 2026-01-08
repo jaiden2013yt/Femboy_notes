@@ -23,7 +23,7 @@ const theList = document.getElementById("TheList");
 async function loadTable() {
  	const { data, error } = await supabaseClient 
 		.from("femboyitems")
-		.select("*");
+		.select();
 
 	if (error) {
 		console.error(error);
