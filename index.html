@@ -47,7 +47,7 @@ loadTable();
 //script to add to the list, I need to get the contents of the username first
 async function addToList() {
 	let username = document.getElementById("THEusername").innerText
-	const response = await supabase
+	const response = await supabaseClient
 		.from("femboyitems")
 		.insert([{ username: username }]);
 
