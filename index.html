@@ -34,7 +34,7 @@ async function loadTable() {
 
 	//this runs on the end of the load function , it adds the usernames to the page
 	for (let i = 0; i < femboyNote.length; i++) {
-		theList.innerHTML =  theList.innerHTML + "<p id=\"listElement" + i + "\"></p>"
+		theList.innerHTML =  theList?.innerHTML + "<p id=\"listElement" + i + "\"></p>"
 		document.getElementById("listElement" + i).textContent = femboyNote[i].username  
 	}
 }
