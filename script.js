@@ -1,0 +1,63 @@
+	  //full js doc
+
+
+//initialize supabase so we can use it 
+const supabaseUrl = "https://uxewybyliojkkaekdfhm.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4ZXd5YnlsaW9qa2thZWtkZmhtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc4MTc0MDksImV4cCI6MjA4MzM5MzQwOX0.qdB95FAJez8U3eGQ9Qr9elp8z59NHXD3DqBVnZ8nPhs";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+//initialize variables 
+
+let femboyNote = [];
+let theList = null;
+// load the list of the usernames into a variable then into the html page
+
+async function loadTable() {
+	// load variables after loading the rest of the page
+	theList = document.getElementById("TheList");
+
+	
+ 	const { data, error } = await supabaseClient 
+		.from("femboyitems")
+		.select();
+
+	if (error) {
+		console.error(error);
+		return;
+	}
+
+	femboyNote = data;
+	console.log(femboyNote)
+	// we want newest first
+	femboyNote.reverse()
+	console.log(femboyNote)
+	//this runs on the end of the load function , it adds the usernames to the page
+	for (let i = 0; i < femboyNote.length; i++) {
+		theList.innerHTML =  theList?.innerHTML + "<p id=\"listElement" + i + "\"></p>"
+		document.getElementById("listElement" + i).textContent = femboyNote[i].username  
+	}
+}
+
+//run loadTable function after the rest of the page is loaded
+window.addEventListener("load", () => { 
+loadTable();
+});
+
+//script to add to the list, I need to get the contents of the username first
+async function addToList() {
+	let username = document.getElementById("THEusername").value
+	console.log(username)
+	const response = await supabaseClient
+		.from("femboyitems")
+		.insert([{ username: username }]);
+
+	const error = response.error 
+
+	if (error) {
+  		console.error(error);
+		return;
+	}
+	window.alert("success!")
+	//add the thing client side DO NOT SUBMIT BEFORE LOADING 
+	theList.innerHTML =  "<p>" + username + "</p>" + theList.innerHTML
+}
