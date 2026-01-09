@@ -16,12 +16,12 @@ const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 //initialize variables 
 
 let femboyNote = [];
-
+let theList = null;
 // load the list of the usernames into a variable then into the html page
 
 async function loadTable() {
 	// load variables after loading the rest of the page
-	const theList = document.getElementById("TheList");
+	theList = document.getElementById("TheList");
 
 	
  	const { data, error } = await supabaseClient 
