@@ -34,8 +34,10 @@ async function loadTable() {
 	}
 
 	femboyNote = data;
+	console.log(femboyNote)
 	// we want newest first
 	femboyNote.reverse
+	console.log(femboyNote)
 	//this runs on the end of the load function , it adds the usernames to the page
 	for (let i = 0; i < femboyNote.length; i++) {
 		theList.innerHTML =  theList?.innerHTML + "<p id=\"listElement" + i + "\"></p>"
