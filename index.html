@@ -34,7 +34,8 @@ async function loadTable() {
 	}
 
 	femboyNote = data;
-
+	// we want newest first
+	femboyNote.reverse
 	//this runs on the end of the load function , it adds the usernames to the page
 	for (let i = 0; i < femboyNote.length; i++) {
 		theList.innerHTML =  theList?.innerHTML + "<p id=\"listElement" + i + "\"></p>"
@@ -62,13 +63,15 @@ async function addToList() {
 		return;
 	}
 	window.alert("success!")
+	//add the thing client side DO NOT SUBMIT BEFORE LOADING 
+	theList.innerHTML =  "<p>" + username + "</p>" + theList.innerHTML"
 }
 </script>
   </head>
   <body>
 	 <p>reload page to refresh list</p>
    	 <h1 class="title">femboy note</h1>
-	 <p>this is femboy note, add your friend usernames the hit "submit" to add them to the list</p>
+	 <p>this is femboy note, add someones username the hit "submit" to add them to the list!</p>
       <input type=text id="THEusername" placeholder="username you want to add"> 
 	 <input type=submit  onclick="addToList()">
      <div class="CSSTheList" id="TheList"> </div>
