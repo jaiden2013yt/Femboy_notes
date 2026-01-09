@@ -1,0 +1,26 @@
+body{
+  background-color: #ffe2f1;
+}
+.title {
+	color: #6F5ACF;
+}
+
+.CSSTheList {
+    background-color: #ffffd8;
+    border-radius: 1em;
+    border: 10px solid #332421;
+    margin: 5% 1.5%;
+    height: 300px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    
+}
+
+.CSSTheList p {
+  font-family: Verdana, Geneva;
+  background-color: #ffe3bb;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  border: 1px solid #ffd5b0;
+  margin: 1% 2%;
+}
